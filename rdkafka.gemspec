@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
   gem.version = Rdkafka::VERSION
   gem.required_ruby_version = '>= 2.4'
-  gem.extensions = %w(ext/Rakefile)
+#   gem.extensions = %w(ext/Rakefile)
 
   gem.add_dependency 'ffi', '~> 1.9'
   gem.add_dependency 'mini_portile2', '~> 2.1'

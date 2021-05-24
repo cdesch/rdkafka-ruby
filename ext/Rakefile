@@ -29,12 +29,12 @@ task :default => :clean do
     ENV["CPPFLAGS"] = "-I/usr/local/opt/openssl/include" unless ENV["CPPFLAGS"]
     ENV["LDFLAGS"] = "-L/usr/local/opt/openssl/lib" unless ENV["LDFLAGS"]
   end
+  recipe.files << "file://#{__dir__}/librdkafka-1.4.0.tar.gz"
+  # recipe.files << {
+  #   :url => "https://codeload.github.com/edenhill/librdkafka/tar.gz/v#{Rdkafka::LIBRDKAFKA_VERSION}",
+  #   :sha256 => Rdkafka::LIBRDKAFKA_SOURCE_SHA256
+  # }
 
-  recipe.files << {
-    :url => "https://codeload.github.com/edenhill/librdkafka/tar.gz/v#{Rdkafka::LIBRDKAFKA_VERSION}",
-    :sha256 => Rdkafka::LIBRDKAFKA_SOURCE_SHA256
-  }
-  recipe.configure_options = ["--host=#{recipe.host}"]
   recipe.cook
   # Move dynamic library we're interested in
   if recipe.host.include?('darwin')
